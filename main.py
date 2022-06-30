@@ -1,21 +1,28 @@
-# Compound and Fix Profit Calculator
+# -*-*- Compound and Fixed Profit Calculator
 
 from calc_brain import Calc
 
-# --- Percentage of desired daily profit.
-percent = float(input("% > "))
 
-# --- Number of working days.
-trade_days = int(input("Days > "))
+calculator_is_on = True
+while calculator_is_on:
+    # --- Percentage of desired daily profit.
+    percentage = float(input("% > "))
 
-# --- The first amount of the transaction.
-initial_fund = float(input("$ > "))
+    # --- Number of working days.
+    trade_days = int(input("Days > "))
 
-choice = input("Compound profit or Fix profit? (C or F): ").lower()
+    # --- The first amount of the transaction.
+    first_amount = float(input("$ > "))
 
-calculator = Calc(percent, trade_days, initial_fund)
+    usr_choice = input("Compound profit or Fixed profit? (C or F): ").lower()
 
-if choice == "c":
-    print(calculator.cp_calc())
-else:
-    print(calculator.fix_profit_calc())
+    calculator = Calc(percentage, trade_days, first_amount)
+
+    if usr_choice == "c":
+        print(calculator.compound_profit_calc())
+    else:
+        print(calculator.fixed_profit_calc())
+
+    calc_off = input("Would you like to continue? (Y or N): ").lower()
+    if calc_off == "n":
+        calculator_is_on = False
